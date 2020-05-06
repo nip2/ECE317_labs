@@ -1,0 +1,36 @@
+* N:\My Documents\ece317\converter\lab4\sawtooth_comp_dcad.asc
+XU1 0 saw N009 N001 N010 saw saw N001 NE555
+V2 N001 0 15
+R6 P001 P002 560
+Q5 saw N008 P002 0 2N2907
+D2 N008 N001 1N750
+C3 N010 0 10n
+R5 N008 0 2.7k
+C4 saw 0 3.3n
+C5 N001 0 1µ
+R§Freq_adj N001 P001 2440
+XU2 0 saw N004 0 NC_01 NC_02 Comp N001 LT1011
+R7 N001 Comp 4.7k
+C7 N001 0 1µ
+C6 N004 N007 1µ
+R9 N005 N004 220k
+XVR1 N003 N006 N005 potentiometer R=10k wiper={R}
+R10 N001 N003 12k
+R8 N006 0 3.3k
+vi N007 0 0
+.model D D
+.lib \\thoth.cecs.pdx.edu\Home07\nip2\My Documents\LTspiceXVII\lib\cmp\standard.dio
+.model NPN NPN
+.model PNP PNP
+.lib \\thoth.cecs.pdx.edu\Home07\nip2\My Documents\LTspiceXVII\lib\cmp\standard.bjt
+* Sawtooth generator
+.tran .07m
+* Comparator
+* DC + superimposed AC
+* duty ratio adj
+.step param R .1 1 .1
+.lib LTC1.lib
+.lib NE555.sub
+.lib potentiometer.lib
+.backanno
+.end
