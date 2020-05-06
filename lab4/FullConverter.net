@@ -5,7 +5,7 @@ R1 N001 Comp 1k
 Q1 N001 Comp N005 0 2N2222
 Q2 0 Comp N005 0 2N2907
 M1 N002 N005 N001 N001 Si7113DN
-L1 N002 N003 560µ
+L1 N002 N003 560µ Ipk=0.55 Rser=0.23 Rpar=1.19795e+06 Cpar=0
 C2 N003 0 100µ
 D1 0 N002 D
 R2 N003 test 5
@@ -27,7 +27,7 @@ R7 N007 Comp 4.7k
 C6 N007 0 1µ
 C7 N010 N013 1µ
 R8 N011 N010 220k
-XVR1 N009 N012 N011 potentiometer R=10k wiper=.5
+XVR1 N009 N012 N011 potentiometer R=10k wiper=.8
 R9 N007 N009 12k
 R10 N012 0 3.3k
 vi1 N013 0 0
@@ -41,7 +41,7 @@ vi1 N013 0 0
 .lib \\thoth.cecs.pdx.edu\Home07\nip2\My Documents\LTspiceXVII\lib\cmp\standard.mos
 * DC to DC buck converter as specified by Fig. 14.1
 * Sawtooth generator
-.tran .5m
+.tran 8m
 * Comparator
 * DC + superimposed AC
 * duty ratio adj
