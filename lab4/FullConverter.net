@@ -1,0 +1,51 @@
+* \\thoth.cecs.pdx.edu\Home07\nip2\My Documents\ece317\ECE317_labs\lab4\FullConverter.asc
+V1 N001 0 10
+C1 N001 0 100µ
+R1 N001 Comp 1k
+Q1 N001 Comp N005 0 2N2222
+Q2 0 Comp N005 0 2N2907
+M1 N002 N005 N001 N001 RSQ015P10
+L1 N002 N003 560µ Ipk=0.55 Rser=0.23 Rpar=1.19795e+06 Cpar=0
+C2 N003 0 100µ
+D1 0 N002 DFLS220L
+R2 N003 test 5
+R3 test 0 20
+M2 N004 Vs N006 N006 RTQ020N05
+R4 Vs N006 470
+XU1 0 saw NC_01 Vcc15 N013 saw saw Vcc15 NE555
+V2 Vcc15 0 15
+R5 P001 P002 560
+Q3 saw N012 P002 0 2N2907
+D2 N012 Vcc15 1N750
+C3 N013 0 10n
+R6 N012 0 680
+C4 saw 0 3.3n
+C5 Vcc15 0 1µ
+R§Freq_adj1 Vcc15 P001 2.2k
+XU2 0 saw N008 0 NC_02 NC_03 Comp Vcc15 LT1011
+R7 Vcc15 NC_04 4.7k
+C6 Vcc15 0 1µ
+C7 N008 N011 1µ
+R8 N009 N008 220k
+XVR1 N007 N010 N009 potentiometer R=10k wiper=.5
+R9 Vcc15 N007 12k
+R10 N010 0 3.3k
+.model D D
+.lib \\thoth.cecs.pdx.edu\Home07\nip2\My Documents\LTspiceXVII\lib\cmp\standard.dio
+.model NPN NPN
+.model PNP PNP
+.lib \\thoth.cecs.pdx.edu\Home07\nip2\My Documents\LTspiceXVII\lib\cmp\standard.bjt
+.model NMOS NMOS
+.model PMOS PMOS
+.lib \\thoth.cecs.pdx.edu\Home07\nip2\My Documents\LTspiceXVII\lib\cmp\standard.mos
+* DC to DC buck converter as specified by Fig. 14.1
+* Sawtooth generator
+.tran .5m
+* Comparator
+* DC + superimposed AC
+* duty ratio adj
+.lib LTC1.lib
+.lib NE555.sub
+.lib potentiometer.lib
+.backanno
+.end
